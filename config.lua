@@ -11,7 +11,11 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+vim.g.tokyonight_style = "night"
+lvim.colorscheme = "tokyonight"
+
+vim.opt.list = true
+vim.opt.listchars:append("eol:↴")
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -57,7 +61,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+lvim.builtin.nvimtree.show_icons.git = 1
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -148,13 +152,28 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- }
 
 -- Additional Plugins
--- lvim.plugins = {
---     {"folke/tokyonight.nvim"},
---     {
---       "folke/trouble.nvim",
---       cmd = "TroubleToggle",
---     },
--- }
+lvim.plugins = {
+    {"folke/tokyonight.nvim"},
+    {
+      "lukas-reineke/indent-blankline.nvim",
+      event = "BufRead",
+      setup = function()
+        vim.g.indentLine_enabled = 1
+        vim.g.indent_blankline_char = "▏"
+        vim.g.show_end_of_line = true
+        vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+        vim.g.indent_blankline_buftype_exclude = {"terminal"}
+        vim.g.indent_blankline_show_trailing_blankline_indent = false
+        vim.g.indent_blankline_show_first_indent_level = true
+        -- vim.g.space_char_blankline = " "
+        -- vim.g.show_current_context = true
+        -- vim.g.show_current_context_start = true
+      end
+    },    -- {
+    --   "folke/trouble.nvim",
+    --   cmd = "TroubleToggle",
+    -- },
+}
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
