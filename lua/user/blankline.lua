@@ -28,6 +28,7 @@ M.config = function()
     "class",
     "return",
     "function",
+    "case",
     "method",
     "^if",
     "^while",
