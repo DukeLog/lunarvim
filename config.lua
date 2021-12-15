@@ -16,6 +16,10 @@ lvim.colorscheme = "tokyonight"
 
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
+
+lvim.builtin.lualine.sections.lualine_a = {'mode'}
+lvim.builtin.lualine.sections.lualine_y = {'location'}
+
 lvim.builtin.dashboard.custom_header = {
 "      Man is least himself when he talks in his own person.     ",
 "         Give him a mask, and he will tell you the truth.       ",
