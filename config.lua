@@ -100,7 +100,8 @@ lvim.builtin.dashboard.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 1
-lvim.builtin.nvimtree.hide_dotfiles = false
+lvim.builtin.nvimtree.setup.hide_dotfiles = false
+lvim.builtin.nvimtree.setup.git.ignore = false
 lvim.builtin.nvimtree.setup.view.width = 35
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -165,7 +166,8 @@ local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { exe = "gofmt", filetypes = { "go" } },
   { exe = "goimports", filetypes = { "go" } },
---   { exe = "isort", filetypes = { "python" } },
+  { exe = "black", filetypes = { "python" } },
+  { exe = "isort", filetypes = { "python" } },
 --   {
 --     exe = "prettier",
 --     ---@usage arguments to pass to the formatter
@@ -198,13 +200,15 @@ formatters.setup {
 lvim.plugins = {
     {"folke/tokyonight.nvim"},
     {"tpope/vim-dispatch"},
+    {"tpope/vim-surround"},
     {
       "lukas-reineke/indent-blankline.nvim",
       config = function()
         require("user.blankline").config()
       end
     },    -- {
-    --   "folke/trouble.nvim",
+    {'mtth/scratch.vim'}
+  --   "folke/trouble.nvim",
     --   cmd = "TroubleToggle",
     -- },
 }
